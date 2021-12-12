@@ -50,28 +50,46 @@ What's the time complexity?
 
  */
 
-function Stack(capacity) {
-    // implement me...
-  }
+class Stack {
+    constructor(capacity) {
+        // Constructor Init
+        this._capacity = capacity || Infinity;
+        this._count = 0;
+        this._storage = {};
+    }
+    push(value) {
+        // Push a value into a stack
+        if(this._capacity > this._count){
+            this._storage[this._count++] = value;
+            return this._count;
+        }
+        return "Max capacity of Stack error";
+    }
+    // Time complexity:
+    pop() {
+        // Remove the Last add element
+    }
+    // Time complexity:
+    peek() {
+        // implement me...
+    }
+    // Time complexity:
+    count() {
+        // implement me...
+    }
+}
+
+
+// Test
+let myStack = new Stack(3);
+console.log(myStack.push('1'));
+console.log(myStack.push(23));
+console.log(myStack.push("Item"));
+console.log(myStack.push("Item"));
+
+
+
   
-  Stack.prototype.push = function(value) {
-    // implement me...
-  };
-  // Time complexity:
-  
-  Stack.prototype.pop = function() {
-    // implement me...
-  };
-  // Time complexity:
-  
-  Stack.prototype.peek = function() {
-    // implement me...
-  };
-  // Time complexity:
-  
-  Stack.prototype.count = function() {
-    // implement me...
-  };
   // Time complexity:
   
   
