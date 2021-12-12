@@ -67,7 +67,19 @@ class Stack {
     }
     // Time complexity:
     pop() {
-        // Remove the Last add element
+        // Remove the Last added element
+        if(this._count == 0){
+            return "Nothing to remove";
+        }
+
+        var value = this._storage[--this._count];
+        delete this._storage[this._count];
+
+        if(this._count < 0){
+            this._count = 0;
+        }
+
+        return value;
     }
     // Time complexity:
     peek() {
@@ -81,11 +93,15 @@ class Stack {
 
 
 // Test
-let myStack = new Stack(3);
-console.log(myStack.push('1'));
-console.log(myStack.push(23));
-console.log(myStack.push("Item"));
-console.log(myStack.push("Item"));
+let myStack = new Stack(4);
+console.log(myStack.push('Goma'));
+console.log(myStack.push('Kigali'));
+console.log(myStack.push('Kinshasa'));
+console.log(myStack.push("Kampala"));
+console.log(myStack.push("Nairobi"));
+console.log(myStack.pop());
+console.log(myStack.pop());
+
 
 
 
