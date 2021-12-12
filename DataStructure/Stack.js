@@ -139,3 +139,73 @@ console.log(myStack.count());
 
 
   // Solution of Exercise 1
+
+  class MinStack {
+    constructor(capacity) {
+        // Constructor Init
+        this._capacity = capacity || Infinity;
+        this._count = 0;
+        this._storage = {};
+        this._min = new Stack();
+    }
+    push(value) {
+        // Push a value into a stack
+        if(this._capacity > this._count){
+            if(this._min.peek() < value){
+                this._min.push(this._min.peek());
+            }
+            else{
+                this._min.push(value);
+            }
+
+            this._storage[this._count++] = value;
+            return this._count;
+        }
+        return "Max capacity of Stack error";
+    }
+    // Time complexity:
+    pop() {
+        // Remove the Last added element
+        if(this._count === 0){
+            return "No element in the stack!";
+        }
+
+        var value = this._storage[--this._count];
+        delete this._storage[this._count];
+
+        if(this._count < 0){
+            this._count = 0;
+        }
+
+        return value;
+    }
+    // Time complexity:
+    peek() {
+        // Time complexity is O(1)
+        if(this._count === 0){
+            return "No element in the stack!";
+        }
+        return this._storage[this._count - 1];
+    }
+    // Time complexity:
+    count() {
+        // Time complexity is O(1)
+        return this._count;
+    }
+
+    min() {
+        return this._min.peek();
+    }
+}
+
+// Test 
+var myMinStack = new MinStack();
+console.log(myMinStack.peek());
+console.log(myMinStack.pop());
+console.log(myMinStack.min());
+console.log(myMinStack.push(5));
+console.log(myMinStack.min());
+console.log(myMinStack.push(3));
+console.log(myMinStack.min());
+console.log(myMinStack.push(4));
+console.log(myMinStack.min());
