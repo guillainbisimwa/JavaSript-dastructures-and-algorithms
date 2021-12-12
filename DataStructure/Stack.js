@@ -94,6 +94,10 @@ class Stack {
         // Time complexity is O(1)
         return this._count;
     }
+
+    storage(){
+        return this._storage
+    }
 }
 
 
@@ -209,3 +213,42 @@ console.log(myMinStack.push(3));
 console.log(myMinStack.min());
 console.log(myMinStack.push(4));
 console.log(myMinStack.min());
+
+// Solution of Exercise 3
+class BalancedParens {
+    constructor(){
+        this._balanced = new Stack();
+    }
+
+    // O(n)
+    feed(value){
+        this._balanced = new Stack();
+
+        value.split('').forEach(element => {
+      
+            if(element == '('){
+                this._balanced.push(')') ;
+            }
+            else if(element == '['){
+                this._balanced.push(']') ;
+            }
+            else if((this._balanced.count() != 0) && (this._balanced.peek() == element) ){
+                this._balanced.pop();
+            }
+        });
+        console.log(this._balanced);
+
+        if(this._balanced.count() == 0){
+            return true;
+        }
+        return false;
+        
+    }
+}
+
+var MybalancedParens = new BalancedParens();
+console.log(MybalancedParens.feed('Math.min(5,(6-3))('));
+console.log(MybalancedParens.feed('sqrt(5*(3+8)/(4-2))'));
+console.log(MybalancedParens.feed('(hello)[world]'));
+console.log(MybalancedParens.feed('([)'));
+console.log(MybalancedParens.feed('[({}{}{})([])]'));
