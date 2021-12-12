@@ -52,10 +52,18 @@ What's the time complexity?
 
 class Queue {
     constructor(capacity) {
-        // implement me...
+        // Init
+        this._capacity = capacity || Infinity;
+        this._storage = {};
+        this._count = 0;
     }
     enqueue(value) {
-        // implement me...
+        // Add value to the queue
+        if(this._capacity > this._count){
+            this._storage[this._count++] = value;
+            return this._count;
+        }
+        return "Max capacity already reached. Remove element before adding a new one.";
     }
     // Time complexity:
     dequeue() {
@@ -69,7 +77,11 @@ class Queue {
         // implement me...
     }
 }
-  
+
+// Test
+var myQueue = new Queue();
+console.log(myQueue.enqueue('Jan'));
+console.log(myQueue.enqueue('Feb'));
   
   // Time complexity:
   
