@@ -55,33 +55,51 @@ class Queue {
         // Init
         this._capacity = capacity || Infinity;
         this._storage = {};
-        this._count = 0;
+        this._head = 0;
+        this._tail = 0;
     }
     enqueue(value) {
         // Add value to the queue
-        if(this._capacity > this._count){
-            this._storage[this._count++] = value;
-            return this._count;
+        if(this._capacity > this.count()){
+            this._storage[this._tail++] = value;
+            return this.count();
         }
         return "Max capacity already reached. Remove element before adding a new one.";
     }
-    // Time complexity:
+    // Time complexity: O(1)
     dequeue() {
-        // implement me...
+        // Remove First added element form the collection
+        var value = this._storage[this._head];
+        delete this._storage[this._head];
+        if(this._head < this._tail) this._head++;
+        return value;
     }
-    // Time complexity:
+    // Time complexity: O(1)
     peek() {
-        // implement me...
+        return this._storage[this._head];
     }
+
     count() {
-        // implement me...
+        // The differece between head and tail
+        return this._tail - this._head;
     }
 }
 
 // Test
 var myQueue = new Queue();
+console.log(myQueue.count());
 console.log(myQueue.enqueue('Jan'));
 console.log(myQueue.enqueue('Feb'));
+console.log(myQueue.peek());
+console.log(myQueue.count());
+console.log(myQueue.enqueue('Mar'));
+console.log(myQueue.enqueue('Apr'));
+console.log(myQueue.count());
+console.log(myQueue.peek());
+console.log(myQueue.dequeue());
+console.log(myQueue.peek());
+
+
   
   // Time complexity:
   
