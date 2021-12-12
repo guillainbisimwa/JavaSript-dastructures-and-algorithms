@@ -83,29 +83,33 @@ class Stack {
     }
     // Time complexity:
     peek() {
-        // implement me...
+        // Time complexity is O(n)
+        return this._storage[this._count - 1];
     }
     // Time complexity:
     count() {
-        // implement me...
+        // Time complexity is O(n)
+        return this._count;
     }
 }
 
 
 // Test
 let myStack = new Stack(4);
+console.log(myStack.count());
 console.log(myStack.push('Goma'));
 console.log(myStack.push('Kigali'));
 console.log(myStack.push('Kinshasa'));
 console.log(myStack.push("Kampala"));
+console.log(myStack.count());
 console.log(myStack.push("Nairobi"));
 console.log(myStack.pop());
+console.log(myStack.peek());
 console.log(myStack.pop());
+console.log(myStack.peek());
+console.log(myStack.count());
 
 
-
-
-  
   // Time complexity:
   
   
