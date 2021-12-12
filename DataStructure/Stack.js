@@ -68,8 +68,8 @@ class Stack {
     // Time complexity:
     pop() {
         // Remove the Last added element
-        if(this._count == 0){
-            return "Nothing to remove";
+        if(this._count === 0){
+            return "No element in the stack!";
         }
 
         var value = this._storage[--this._count];
@@ -83,19 +83,22 @@ class Stack {
     }
     // Time complexity:
     peek() {
-        // Time complexity is O(n)
+        // Time complexity is O(1)
+        if(this._count === 0){
+            return "No element in the stack!";
+        }
         return this._storage[this._count - 1];
     }
     // Time complexity:
     count() {
-        // Time complexity is O(n)
+        // Time complexity is O(1)
         return this._count;
     }
 }
 
 
 // Test
-let myStack = new Stack(4);
+let myStack = new Stack(2);
 console.log(myStack.count());
 console.log(myStack.push('Goma'));
 console.log(myStack.push('Kigali'));
@@ -106,6 +109,8 @@ console.log(myStack.push("Nairobi"));
 console.log(myStack.pop());
 console.log(myStack.peek());
 console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(myStack.count());
 console.log(myStack.peek());
 console.log(myStack.count());
 
@@ -131,4 +136,6 @@ console.log(myStack.count());
      3. no disk can be placed on top of a disk that is smaller than it
   The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
    */
-  
+
+
+  // Solution of Exercise 1
