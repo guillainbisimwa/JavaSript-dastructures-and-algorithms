@@ -57,8 +57,21 @@ class BinarySearchTree {
         this.left = null;
         this.right = null;
     }
-    insert(value) {
-        // implement me...
+    insert(value){
+        // Insert value into correct position within tree
+        if(this.value <= value){
+            // right
+            if(this.right){
+                this.right.insert(value);
+            } else this.right = new BinarySearchTree(value);
+        }
+        else {
+            // left
+            if(this.left){
+                this.left.insert(value);
+            } else this.left = new BinarySearchTree(value);
+        }
+        return this;
     }
     // Time complexity:
     contains(value) {
@@ -89,3 +102,16 @@ class BinarySearchTree {
   // Time complexity:
   
 // Test
+var bsTree = new BinarySearchTree(10);
+//bsTree.insert(5).insert(15).insert(8).insert(3).insert(7).insert(20).insert(17).insert(9).insert(14);
+bsTree.insert(5);
+bsTree.insert(15);
+bsTree.insert(8);
+bsTree.insert(3);
+bsTree.insert(7);
+bsTree.insert(20);
+bsTree.insert(17);
+bsTree.insert(9);
+bsTree.insert(14);
+
+console.log(bsTree);
