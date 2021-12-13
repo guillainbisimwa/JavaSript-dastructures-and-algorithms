@@ -140,7 +140,16 @@ const simpleHash = (str, tableSize) => {
   }
   // Time complexity:
   delete(key) {
-    // implement me...
+    // Remove any value associated to the key
+    var match = this.find(key).match;
+    if(match){
+      var bucket = this.find(key).bucket;
+      var matchIndex = this.find(key).matchIndex;
+
+      bucket.splice(matchIndex, 1);
+      this._count--;
+    }
+    return !! match;
   }
   // Time complexity:
   count() {
@@ -183,3 +192,7 @@ const simpleHash = (str, tableSize) => {
   console.log(myMap.has('c'));
   console.log(myMap.has('e'));
   console.log(myMap.has('a'));
+  console.log(myMap._storage);
+  console.log(myMap.delete('a'));
+  console.log(myMap._storage);
+  
