@@ -92,7 +92,9 @@ class Graph {
         this._nodes = {};
     }
     addNode(value) {
-        // implement me...
+        // Add node to graph
+        if(value === undefined) return 'Add a value';
+        this._nodes[value] = this._nodes[value] || [];
     }
     // Time complexity:
     removeNode(value) {
@@ -100,7 +102,8 @@ class Graph {
     }
     // Time complexity:
     contains(value) {
-        // implement me...
+        // Returns true if value is found in graph, false otherwise
+        return this._nodes[value] !== undefined;
     }
     // Time complexity:
     addEdge(value1, value2) {
@@ -130,3 +133,12 @@ class Graph {
   
   // Time complexity:
   
+  // Test
+  var myGraph = new Graph();
+  myGraph.addNode(3);
+  myGraph.addNode(2);
+  myGraph.addNode(4);
+  console.log(myGraph);
+  console.log(myGraph._nodes);
+  console.log(myGraph.contains(4));
+  console.log(myGraph.contains(1));
