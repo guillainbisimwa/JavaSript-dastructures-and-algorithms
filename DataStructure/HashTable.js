@@ -135,7 +135,8 @@ const simpleHash = (str, tableSize) => {
   }
   // Time complexity: O(1)
   has(key) {
-    // implement me...
+    // Return true/false depending on if a value has been associated with the key
+    return !!this.find(key).match
   }
   // Time complexity:
   delete(key) {
@@ -172,10 +173,13 @@ const simpleHash = (str, tableSize) => {
   var myMap = new HashTable(10);
   console.log(myMap);
   console.log(myMap._storage);
-  console.log( myMap.set(1, "Guy"));
-  console.log( myMap.set(1, "Guystave"));
-  console.log( myMap.set(2, "Eva"));
+  console.log( myMap.set('a', "Guy"));
+  console.log( myMap.set('b', "Guystave"));
+  console.log( myMap.set('c', "Eva"));
   console.log(myMap._storage);
-  console.log(myMap.get(1));
+  console.log(myMap.get('a'));
   console.log(myMap.get(2));
-  console.log(myMap.get(3));
+  console.log(myMap.get('c'));
+  console.log(myMap.has('c'));
+  console.log(myMap.has('e'));
+  console.log(myMap.has('a'));
