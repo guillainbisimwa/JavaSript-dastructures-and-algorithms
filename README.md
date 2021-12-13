@@ -1,7 +1,7 @@
----
-noteId: "ad3d48b05b8711ec924cf97bca1e1d80"
-tags: []
-
----
-
 # DATASTRUCTURE AND ALGORITHMS IN JAVASCRIPT
+
+## Implement a Stack data structure
+
+LIFO - Last in, first out
+Collection of elements with push and pop operations.
+Note that there is a natural order. Elements are removed in the reverse order of their addition.
