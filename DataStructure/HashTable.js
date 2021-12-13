@@ -58,7 +58,7 @@ Resize the hash table:
 */
 
 // Simple hashing function to use in your implementation
-function simpleHash(str, tableSize) {
+const simpleHash = (str, tableSize) => {
     var hash = 0;
     for (var i=0; i<str.length; i++) {
       hash += str.charCodeAt(i) * (i+1);
@@ -67,50 +67,75 @@ function simpleHash(str, tableSize) {
   }
   // source: http://pmav.eu/stuff/javascript-hashing-functions/source.html
   
-  function HashTable(/* ??? */) {
-    // implement me...
+  class HashTable {
+  constructor(tableSize) {
+    // Init
+    this._size = tableSize;
+    this._storage = [];
+    this._count = 0;
   }
-  
   // This is a helper method that you may want to implement to help keep your code DRY
   // You can implement the hash table methods without it.
   // I recommend skipping it and coming back if you find that it will be useful
-  HashTable.prototype.find = function(key) {
-    // implement me...
+  find(key) {
+    var hash = simpleHash(key, this._size);
+    this._storage[hash] = this._storage[hash] || [];
+    var bucket = this._storage[hash];
+
+    var match;
+    var matchIndex;
+
+    bucket.forEach((item, index)=>{
+      if (item.hasOwnProperty(key)) {
+        match = item;
+        matchIndex = index;
+      }
+    });
+
     return {
       match: match,
       bucket: bucket,
       matchIndex: matchIndex
     };
-  };
-  
-  HashTable.prototype.set = function(key, value) {
-    // implement me...
-  };
+  }
+
+  /**
+   * 
+   * @param {number} key 
+   * @param {*} value 
+   * Store the key-value pair in the storage array.
+   * If the key already exists, replace stored value with new value.
+   * Use the hashing function to map the key to an integer and store the value at the corresponding index.
+   * Account for the possibility of collisions.
+   * 
+   */
+  set(key, value) {
+    // Store the key-value pair in the storage array.
+
+  }
   // Time complexity:
-  
-  HashTable.prototype.get = function(key) {
+  get(key) {
     // implement me...
-  };
+  }
   // Time complexity:
-  
-  HashTable.prototype.has = function(key) {
+  has(key) {
     // implement me...
-  };
+  }
   // Time complexity:
-  
-  HashTable.prototype.delete = function(key) {
+  delete(key) {
     // implement me...
-  };
+  }
   // Time complexity:
-  
-  HashTable.prototype.count = function() {
+  count() {
     // implement me...
-  };
+  }
   // Time complexity:
-  
-  HashTable.prototype.forEach = function(callback) {
+  forEach(callback) {
     // implement me...
-  };
+  }
+}
+  
+  
   // Time complexity:
   
   
@@ -126,3 +151,8 @@ function simpleHash(str, tableSize) {
   
   */
   
+  // Test 
+
+  var myMap = new HashTable();
+  console.log(myMap);
+  myMap.find(1);
