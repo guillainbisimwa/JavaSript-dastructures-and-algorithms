@@ -96,7 +96,7 @@ class Graph {
         if(value === undefined) return 'Add a value';
         this._nodes[value] = this._nodes[value] || [];
     }
-    // Time complexity: O(n)
+    // Time complexity: O(log(n))
     removeNode(value) {
         // Remove node from graph
         this._nodes[value].forEach(neighbor=> {
@@ -121,9 +121,14 @@ class Graph {
         this._nodes[value1].push(value2);
         this._nodes[value2].push(value1);
     }
-    // Time complexity:
+    // Time complexity: O(1)
     removeEdge(value1, value2) {
-        // implement me...
+        // Remove connection between two nodes
+        if (!this._nodes[value1] || !this._nodes[value2]) {
+            return "Invalid node";
+        }
+        this._nodes[value1].splice(this._nodes[value1].indexOf(value2), 1);
+        this._nodes[value2].splice(this._nodes[value2].indexOf(value1), 1);
     }
     // Time complexity:
     hasEdge(value1, value2) {
@@ -165,4 +170,12 @@ class Graph {
   console.log(myGraph._nodes);
   myGraph.removeNode(4);
   console.log(myGraph._nodes);
-  
+  myGraph.addNode(4);
+  console.log(myGraph._nodes);
+  console.log(myGraph.addEdge(4, 2));
+  console.log(myGraph.addEdge(4, 1));
+  console.log(myGraph._nodes);
+  myGraph.removeEdge(4,2);
+  console.log(myGraph._nodes);
+  myGraph.removeEdge(2,1);
+  console.log(myGraph._nodes);
