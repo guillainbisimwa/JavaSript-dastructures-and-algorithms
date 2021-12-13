@@ -99,6 +99,21 @@ const simpleHash = (str, tableSize) => {
     };
   }
 
+  // O(n)
+  resize = (newSize) =>{
+    var oldStorage = this._storage;
+    this._size = newSize;
+    this._count = 0;
+    this._storage = [];
+    var that = this;
+    oldStorage.forEach(function(bucket) {
+      bucket.forEach(function(item) {
+        var key = Object.keys(item)[0];
+        that.set(key, item[key]);
+      });
+    });
+  };
+
   /**
    * 
    * @param {number} key 
@@ -151,6 +166,9 @@ const simpleHash = (str, tableSize) => {
 
       bucket.splice(matchIndex, 1);
       this._count--;
+      if (this._count < 0.25*this._size) {
+        this.resize(0.5*this._size);
+      }
     }
     return !! match;
   }
