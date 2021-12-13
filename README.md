@@ -1,5 +1,5 @@
 ---
-noteId: "83f664e05c1e11eca0efa99f91798ed3"
+noteId: "847a1c605c3511eca0efa99f91798ed3"
 tags: []
 ---
 
@@ -28,6 +28,18 @@ A tree has a root node.
 The root node has 0 or more children.
 Each child node has 0 or more children.
 (each node in the tree can be seen as a subtree)
+
+## Implement a BINARY SEARCH TREES data structure
+
+A binary search tree is a tree with the additional constraints:
+
+- Each node has only two child nodes (node.left and node.right)
+- All the values in the left subtree of a node are less than or equal to the value of the node
+- All the values in the right subtree of a node are greater than the value of the node
+
+## Implement a Graph data structure
+
+Stores nodes (represented by any primitive value) and the neighbors for each node. This implementation represents a graph as an [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list).
 
 ## Implement a HASH TABLE data structure
 
