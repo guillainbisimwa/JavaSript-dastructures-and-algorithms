@@ -115,7 +115,7 @@ class LinkedList {
 
     // Time complexity: O(1)
     insert(value) {
-        // Insert at the end
+        // Insert new node at the end
         const newNode = new Node(value);
         const oldNode = this.tail;
         this.tail = newNode;
@@ -124,7 +124,11 @@ class LinkedList {
 
     // Time complexity:
     insertAfter(node, value) {
-        // implement me...
+        // insert new node associated with value passed in after refNode
+        const newNode = new Node(value);
+        const oldNext = node.next;
+        node.next = newNode;
+        newNode.next = oldNext;
     }
     // Time complexity:
     removeAfter(node) {
@@ -164,7 +168,11 @@ myLinkedList.insert(2);
 myLinkedList.insert(4);
 myLinkedList.insert(3);
 console.log(myLinkedList.print());
-  
+myLinkedList.insertAfter(myLinkedList.head, 9);
+console.log(myLinkedList.print());
+myLinkedList.insertAfter(myLinkedList.head.next, 8);
+console.log(myLinkedList.print());
+
   
   // Time complexity:
   
