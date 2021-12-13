@@ -138,7 +138,7 @@ const simpleHash = (str, tableSize) => {
     // Return true/false depending on if a value has been associated with the key
     return !!this.find(key).match
   }
-  // Time complexity:
+  // Time complexity: O(1)
   delete(key) {
     // Remove any value associated to the key
     var match = this.find(key).match;
@@ -151,13 +151,20 @@ const simpleHash = (str, tableSize) => {
     }
     return !! match;
   }
-  // Time complexity:
+  // Time complexity: O(1)
   count() {
-    // implement me...
+    // integer number of key/value pairs in hash table
+    return this._count;
   }
-  // Time complexity:
+  // Time complexity: O(n)
   forEach(callback) {
-    // implement me...
+    // Invokes callback function once for each key-value pair in the hash table
+    this._storage.forEach((bucket) => {
+      bucket = bucket || [];
+      bucket.forEach((item)=> {
+        callback(item);
+      })
+    })
   }
 }
   
@@ -190,9 +197,18 @@ const simpleHash = (str, tableSize) => {
   console.log(myMap.get(2));
   console.log(myMap.get('c'));
   console.log(myMap.has('c'));
+  console.log(myMap.count());
   console.log(myMap.has('e'));
   console.log(myMap.has('a'));
   console.log(myMap._storage);
   console.log(myMap.delete('a'));
   console.log(myMap._storage);
-  
+  console.log(myMap.count());
+
+  var itemInHT = [];
+
+  myMap.forEach((value)=> {
+    itemInHT.push(value);
+  });
+
+  console.log(itemInHT);
