@@ -12,10 +12,19 @@ FIFO - First in, first out
 Collection of elements with enqueue and dequeue operations.
 Note that there is a natural order. Elements are removed in the order of their addition.
 
-## Implement a Queue LINKED LIST data structure
+## Implement a LINKED LIST data structure
 
 Comprised of nodes that represent a sequence.
 Each node is composed of data and a reference/link to the next node.
+
+## Implement a HASH TABLE data structure
+
+Collection of `key-value` pairs.
+Map keys to values for efficient lookup.
+Use an array as the underlying data structure.
+Hash table should have a size - this will be used by the hashing function to determine what index to map the key to.
+A hashing function is used to map the key to an integer, which is the index that the value is to be stored at.
+Since our hashing function might map multiple keys to the same integer, we have to deal with collisions by creating buckets at each index of the storage array. These buckets can be arrays or linked lists.
 
 ## Author
 
@@ -29,7 +38,7 @@ Each node is composed of data and a reference/link to the next node.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/guillainbisimwa/Javascript-dastructures-and-algorithms/issues).
+Feel free to check the [issues page](https://github.com/guillainbisimwa/JavaSript-dastructures-and-algorithms/issues).
 
 ## Acknowledgments
 
