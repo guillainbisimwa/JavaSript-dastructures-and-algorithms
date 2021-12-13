@@ -58,7 +58,7 @@ Resize the hash table:
 */
 
 // Simple hashing function to use in your implementation
-function simpleHash(str, tableSize) {
+const simpleHash = (str, tableSize) => {
     var hash = 0;
     for (var i=0; i<str.length; i++) {
       hash += str.charCodeAt(i) * (i+1);
@@ -67,50 +67,129 @@ function simpleHash(str, tableSize) {
   }
   // source: http://pmav.eu/stuff/javascript-hashing-functions/source.html
   
-  function HashTable(/* ??? */) {
-    // implement me...
+  class HashTable {
+  constructor(tableSize) {
+    // Init
+    this._size = tableSize;
+    this._storage = [];
+    this._count = 0;
   }
-  
   // This is a helper method that you may want to implement to help keep your code DRY
   // You can implement the hash table methods without it.
   // I recommend skipping it and coming back if you find that it will be useful
-  HashTable.prototype.find = function(key) {
-    // implement me...
+  find(key) {
+    var hash = simpleHash(key, this._size);
+    this._storage[hash] = this._storage[hash] || [];
+    var bucket = this._storage[hash];
+
+    var match;
+    var matchIndex;
+
+    bucket.forEach((item, index)=>{
+      if (item.hasOwnProperty(key)) {
+        match = item;
+        matchIndex = index;
+      }
+    });
+
     return {
       match: match,
       bucket: bucket,
       matchIndex: matchIndex
     };
+  }
+
+  // O(n)
+  resize = (newSize) =>{
+    var oldStorage = this._storage;
+    this._size = newSize;
+    this._count = 0;
+    this._storage = [];
+    var that = this;
+    oldStorage.forEach(function(bucket) {
+      bucket.forEach(function(item) {
+        var key = Object.keys(item)[0];
+        that.set(key, item[key]);
+      });
+    });
   };
+
+  /**
+   * 
+   * @param {number} key 
+   * @param {*} value 
+   * Store the key-value pair in the storage array.
+   * If the key already exists, replace stored value with new value.
+   * Use the hashing function to map the key to an integer and store the value at the corresponding index.
+   * Account for the possibility of collisions.
+   * 
+   */
+  set(key, value) {
+    // Store the key-value pair in the storage array.
+    var match = this.find(key).match;
+    var bucket = this.find(key).bucket;
+
+    //if macth exists, update key
+    if (match) {
+      match[key] = value;
+    } 
+    else {
+      var newItem = {};
+      newItem[key] = value;
+      bucket.push(newItem);
+      this._count++;
+      if (this._count > 0.75 * this._size) {
+        this.resize(2 * this._size);
+      }
+    }
+
+    return this;
+  }
+  // Time complexity: O(1)
+  get(key) {
+    // value associated with key, or undefined if none
+    var match = this.find(key).match;
+    return match && match[key];
+  }
+  // Time complexity: O(1)
+  has(key) {
+    // Return true/false depending on if a value has been associated with the key
+    return !!this.find(key).match
+  }
+  // Time complexity: O(1)
+  delete(key) {
+    // Remove any value associated to the key
+    var match = this.find(key).match;
+    if(match){
+      var bucket = this.find(key).bucket;
+      var matchIndex = this.find(key).matchIndex;
+
+      bucket.splice(matchIndex, 1);
+      this._count--;
+      if (this._count < 0.25*this._size) {
+        this.resize(0.5*this._size);
+      }
+    }
+    return !! match;
+  }
+  // Time complexity: O(1)
+  count() {
+    // integer number of key/value pairs in hash table
+    return this._count;
+  }
+  // Time complexity: O(n)
+  forEach(callback) {
+    // Invokes callback function once for each key-value pair in the hash table
+    this._storage.forEach((bucket) => {
+      bucket = bucket || [];
+      bucket.forEach((item)=> {
+        callback(item);
+      })
+    })
+  }
+}
   
-  HashTable.prototype.set = function(key, value) {
-    // implement me...
-  };
-  // Time complexity:
   
-  HashTable.prototype.get = function(key) {
-    // implement me...
-  };
-  // Time complexity:
-  
-  HashTable.prototype.has = function(key) {
-    // implement me...
-  };
-  // Time complexity:
-  
-  HashTable.prototype.delete = function(key) {
-    // implement me...
-  };
-  // Time complexity:
-  
-  HashTable.prototype.count = function() {
-    // implement me...
-  };
-  // Time complexity:
-  
-  HashTable.prototype.forEach = function(callback) {
-    // implement me...
-  };
   // Time complexity:
   
   
@@ -126,3 +205,31 @@ function simpleHash(str, tableSize) {
   
   */
   
+  // Test 
+
+  var myMap = new HashTable(10);
+  console.log(myMap);
+  console.log(myMap._storage);
+  console.log( myMap.set('a', "Guy"));
+  console.log( myMap.set('b', "Guystave"));
+  console.log( myMap.set('c', "Eva"));
+  console.log(myMap._storage);
+  console.log(myMap.get('a'));
+  console.log(myMap.get(2));
+  console.log(myMap.get('c'));
+  console.log(myMap.has('c'));
+  console.log(myMap.count());
+  console.log(myMap.has('e'));
+  console.log(myMap.has('a'));
+  console.log(myMap._storage);
+  console.log(myMap.delete('a'));
+  console.log(myMap._storage);
+  console.log(myMap.count());
+
+  var itemInHT = [];
+
+  myMap.forEach((value)=> {
+    itemInHT.push(value);
+  });
+
+  console.log(itemInHT);
