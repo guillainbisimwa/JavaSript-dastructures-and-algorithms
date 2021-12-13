@@ -1,3 +1,8 @@
+---
+noteId: "847a1c605c3511eca0efa99f91798ed3"
+tags: []
+---
+
 # DATASTRUCTURE AND ALGORITHMS IN JAVASCRIPT
 
 ## Implement a Stack data structure
@@ -23,6 +28,14 @@ A tree has a root node.
 The root node has 0 or more children.
 Each child node has 0 or more children.
 (each node in the tree can be seen as a subtree)
+
+## Implement a BINARY SEARCH TREES data structure
+
+A binary search tree is a tree with the additional constraints:
+
+- Each node has only two child nodes (node.left and node.right)
+- All the values in the left subtree of a node are less than or equal to the value of the node
+- All the values in the right subtree of a node are greater than the value of the node
 
 ## Implement a Graph data structure
 
