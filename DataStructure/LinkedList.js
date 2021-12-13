@@ -146,9 +146,14 @@ class LinkedList {
         return nodeToRemove.value;
 
     }
-    // Time complexity:
+    // Time complexity: O(1)
     insertHead(value) {
-        // implement me...
+        // insert new head node at the beginning of the list with the value passed in
+        const newNode = new Node(value);
+        newNode.next = this.head;
+        this.head = newNode;
+
+        return this.head;
     }
     // Time complexity:
     removeHead() {
@@ -189,6 +194,8 @@ console.log(myLinkedList.print());
 console.log(myLinkedList.removeAfter(myLinkedList.head));
 console.log(myLinkedList.print());
 myLinkedList.insert(5);
+console.log(myLinkedList.print());
+myLinkedList.insertHead(5);
 console.log(myLinkedList.print());
 
 
