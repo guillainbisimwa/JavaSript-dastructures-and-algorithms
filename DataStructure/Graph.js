@@ -92,41 +92,143 @@ class Graph {
         this._nodes = {};
     }
     addNode(value) {
-        // implement me...
+        // Add node to graph
+        if(value === undefined) return 'Add a value';
+        this._nodes[value] = this._nodes[value] || [];
     }
-    // Time complexity:
+    // Time complexity: O(log(n))
     removeNode(value) {
-        // implement me...
+        // Remove node from graph
+        this._nodes[value].forEach(neighbor=> {
+            var neighborsNeighbors = this._nodes[neighbor];
+            // find index of neighbor's node
+            var index = neighborsNeighbors.indexOf(value);
+            neighborsNeighbors.splice(index, 1);
+        });
+        delete this._nodes[value];
     }
-    // Time complexity:
+    // Time complexity: O(1)
     contains(value) {
-        // implement me...
+        // Returns true if value is found in graph, false otherwise
+        return this._nodes[value] !== undefined;
     }
-    // Time complexity:
+    // Time complexity: O(1)
     addEdge(value1, value2) {
-        // implement me...
+        // Create connection between two nodes if they're both present in the graph
+        if (!this._nodes[value1] || !this._nodes[value2]) {
+            return "Invalid node";
+        }
+        this._nodes[value1].push(value2);
+        this._nodes[value2].push(value1);
     }
-    // Time complexity:
+    // Time complexity: O(1)
     removeEdge(value1, value2) {
-        // implement me...
+        // Remove connection between two nodes
+        if (!this._nodes[value1] || !this._nodes[value2]) {
+            return "Invalid node";
+        }
+        this._nodes[value1].splice(this._nodes[value1].indexOf(value2), 1);
+        this._nodes[value2].splice(this._nodes[value2].indexOf(value1), 1);
     }
     // Time complexity:
     hasEdge(value1, value2) {
-        // implement me...
+        // Returns true if edge exists, false otherwise
+        return this._nodes[value1].indexOf(value2) > -1
     }
     // Time complexity:
     forEach(fn) {
-        // implement me...
+        // Traverse the graph and invoke the passed callback once for each node. The callback function receives the following for each node: node value, node Neighbors, all nodes.
+        for (const node in this._nodes) {
+            fn(node, this._nodes[node], this._nodes);
+        }
     }
     // Time complexity:
+    // TO BE CHECK !!!!!!!!!
     traverseDepthFirst(value, fn, visited, distance) {
-        // implement me...
+        // Starting at the node with the value passed in, traverse the graph and invoke the callback for each node in a depth-first fashion.
+        if (!this._nodes[value] || typeof fn !== 'function') return 'Invalid value or function';
+        visited = visited || {};
+        distance = distance || 0;
+        fn(value, distance);
+        visited[value] = true;
+        this._nodes[value].forEach(function(neighbor) {
+          if (visited[neighbor]) return;
+          this.traverseDepthFirst(neighbor, fn, visited, distance+1);
+        }, this);
     }
     // Time complexity:
     traverseBreadthFirst(value, fn) {
-        // implement me...
+        // Starting at the node with the value passed in, traverse the graph and invoke the callback for each node in a breadth-first fashion.
+
+        if (!this._nodes[value] || typeof fn !== 'function') return 'Invalid value or function';
+        var visited = {};
+        var queue = [value];
+        visited[value] = 0;
+        while (queue.length) {
+          var node = queue.shift();
+          fn(node, visited[node]);
+          var neighbors = this._nodes[node].filter(function(neighbor) {
+            if (visited[neighbor] === undefined) {
+              visited[neighbor] = visited[node]+1;
+              return true;
+            }
+          });
+          queue = queue.concat(neighbors);
+        }
     }
 }
   
   // Time complexity:
   
+// Test
+var myGraph = new Graph();
+myGraph.addNode(4);
+myGraph.addNode(3);
+myGraph.addNode(1);
+myGraph.addNode(2);
+myGraph.addNode(5);
+
+console.log(myGraph);
+console.log(myGraph._nodes);
+console.log(myGraph.contains(4));
+console.log(myGraph.contains(1));
+console.log(myGraph.addEdge(3,7));
+console.log(myGraph._nodes);
+console.log(myGraph.addEdge(1, 2));
+console.log(myGraph.addEdge(3,2));
+console.log(myGraph.addEdge(4, 2));
+console.log(myGraph.addEdge(1, 4));
+console.log(myGraph._nodes);
+myGraph.removeNode(4);
+console.log(myGraph._nodes);
+myGraph.addNode(4);
+console.log(myGraph._nodes);
+console.log(myGraph.addEdge(4, 2));
+console.log(myGraph.addEdge(4, 1));
+console.log(myGraph._nodes);
+myGraph.removeEdge(4,2);
+console.log(myGraph._nodes);
+myGraph.removeEdge(2,1);
+console.log(myGraph._nodes);
+console.log(myGraph.hasEdge(2, 1), 'supposed to false');
+console.log(myGraph.hasEdge(4, 1), 'supposed to true');
+console.log(myGraph.hasEdge(3, 2), 'supposed to true');
+myGraph.addEdge(2,1);
+myGraph.addEdge(4,2);
+myGraph.addEdge(5,3);
+console.log(myGraph._nodes);
+myGraph.forEach((node, neighbor)=> {
+    console.log(node, 'has neighbors', neighbor);
+});
+
+var traverseDF = [];
+myGraph.traverseDepthFirst(1, (val, dist)=> { 
+    traverseDF.push([val, dist]) 
+});
+console.log(traverseDF, 'should be [ [ 1, 0 ], [ 2, 1 ], [ 3, 2 ], [ 5, 3 ], [ 4, 2 ] ]');
+
+var traverseBF = [];
+myGraph.traverseBreadthFirst(1, (val, dist)=> { 
+    traverseBF.push([val, dist]) 
+});
+console.log(traverseBF, 'should be [ [ 1, 0 ], [ 2, 1 ], [ 4, 1 ], [ 3, 2 ], [ 5, 3 ] ]');
