@@ -162,7 +162,13 @@ class LinkedList {
         return this.head.value;
     }
     findNode(value) {
-        // implement me...
+        // first node that has a value matching what was passed in
+        var node = this.head;
+        while(node){
+            if(node.value === value) return node;
+            node = node.next;
+        }
+        return 'No node found';
     }
     // Time complexity:
     appendToTail(value) {
@@ -203,6 +209,9 @@ myLinkedList.insertHead(5);
 console.log(myLinkedList.print());
 console.log(myLinkedList.removeHead());
 console.log(myLinkedList.print());
+console.log(myLinkedList.findNode(2).value);
+console.log(myLinkedList.findNode(20).value);
+
 
 
   
