@@ -93,6 +93,7 @@ class LinkedList {
         if (headValue === undefined)
             console.log('Must provide value for first node');
         this.head = new Node(headValue);
+        this.tail = this.head;
     }
     forEach(callback) {
         // invoke callback function with the value of each node
@@ -111,6 +112,16 @@ class LinkedList {
         });
         return res.join(', ');
     }
+
+    // Time complexity: O(1)
+    insert(value) {
+        // Insert at the end
+        const newNode = new Node(value);
+        const oldNode = this.tail;
+        this.tail = newNode;
+        oldNode.next = newNode;
+    }
+
     // Time complexity:
     insertAfter(node, value) {
         // implement me...
@@ -148,7 +159,11 @@ class LinkedList {
 // Test
 
 var myLinkedList = new LinkedList(1);
-console.log(myLinkedList.print())
+console.log(myLinkedList.print());
+myLinkedList.insert(2);
+myLinkedList.insert(4);
+myLinkedList.insert(3);
+console.log(myLinkedList.print());
   
   
   // Time complexity:
