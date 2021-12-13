@@ -107,7 +107,12 @@ class Graph {
     }
     // Time complexity:
     addEdge(value1, value2) {
-        // implement me...
+        // Create connection between two nodes if they're both present in the graph
+        if (!this._nodes[value1] || !this._nodes[value2]) {
+            return "Invalid node";
+        }
+        this._nodes[value1].push(value2);
+        this._nodes[value2].push(value1);
     }
     // Time complexity:
     removeEdge(value1, value2) {
@@ -142,3 +147,7 @@ class Graph {
   console.log(myGraph._nodes);
   console.log(myGraph.contains(4));
   console.log(myGraph.contains(1));
+  console.log(myGraph.addEdge(3,2))
+  console.log(myGraph.addEdge(3,7))
+  console.log(myGraph._nodes);
+  
