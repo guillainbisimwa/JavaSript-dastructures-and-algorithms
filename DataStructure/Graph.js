@@ -137,7 +137,10 @@ class Graph {
     }
     // Time complexity:
     forEach(fn) {
-        // implement me...
+        // Traverse the graph and invoke the passed callback once for each node. The callback function receives the following for each node: node value, node Neighbors, all nodes.
+        for (const node in this._nodes) {
+            fn(node, this._nodes[node], this._nodes);
+        }
     }
     // Time complexity:
     traverseDepthFirst(value, fn, visited, distance) {
@@ -151,35 +154,40 @@ class Graph {
   
   // Time complexity:
   
-  // Test
-  var myGraph = new Graph();
-  myGraph.addNode(4);
-  myGraph.addNode(3);
-  myGraph.addNode(1);
-  myGraph.addNode(2);
+// Test
+var myGraph = new Graph();
+myGraph.addNode(4);
+myGraph.addNode(3);
+myGraph.addNode(1);
+myGraph.addNode(2);
 
-  console.log(myGraph);
-  console.log(myGraph._nodes);
-  console.log(myGraph.contains(4));
-  console.log(myGraph.contains(1));
-  console.log(myGraph.addEdge(3,7));
-  console.log(myGraph._nodes);
-  console.log(myGraph.addEdge(1, 2));
-  console.log(myGraph.addEdge(3,2));
-  console.log(myGraph.addEdge(4, 2));
-  console.log(myGraph.addEdge(1, 4));
-  console.log(myGraph._nodes);
-  myGraph.removeNode(4);
-  console.log(myGraph._nodes);
-  myGraph.addNode(4);
-  console.log(myGraph._nodes);
-  console.log(myGraph.addEdge(4, 2));
-  console.log(myGraph.addEdge(4, 1));
-  console.log(myGraph._nodes);
-  myGraph.removeEdge(4,2);
-  console.log(myGraph._nodes);
-  myGraph.removeEdge(2,1);
-  console.log(myGraph._nodes);
-  console.log(myGraph.hasEdge(2, 1), 'supposed to false');
-  console.log(myGraph.hasEdge(4, 1), 'supposed to true');
-  console.log(myGraph.hasEdge(3, 2), 'supposed to true');
+console.log(myGraph);
+console.log(myGraph._nodes);
+console.log(myGraph.contains(4));
+console.log(myGraph.contains(1));
+console.log(myGraph.addEdge(3,7));
+console.log(myGraph._nodes);
+console.log(myGraph.addEdge(1, 2));
+console.log(myGraph.addEdge(3,2));
+console.log(myGraph.addEdge(4, 2));
+console.log(myGraph.addEdge(1, 4));
+console.log(myGraph._nodes);
+myGraph.removeNode(4);
+console.log(myGraph._nodes);
+myGraph.addNode(4);
+console.log(myGraph._nodes);
+console.log(myGraph.addEdge(4, 2));
+console.log(myGraph.addEdge(4, 1));
+console.log(myGraph._nodes);
+myGraph.removeEdge(4,2);
+console.log(myGraph._nodes);
+myGraph.removeEdge(2,1);
+console.log(myGraph._nodes);
+console.log(myGraph.hasEdge(2, 1), 'supposed to false');
+console.log(myGraph.hasEdge(4, 1), 'supposed to true');
+console.log(myGraph.hasEdge(3, 2), 'supposed to true');
+myGraph.addEdge(2,1);
+console.log(myGraph._nodes);
+myGraph.forEach((node, neighbor)=> {
+    console.log(node, 'has neighbors', neighbor);
+});
