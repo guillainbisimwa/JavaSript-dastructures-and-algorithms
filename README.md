@@ -34,6 +34,7 @@ Feel free to check the [issues page](https://github.com/guillainbisimwa/Javascri
 ## Acknowledgments
 
 - [Frontendmasters](https://frontendmasters.com/courses/data-structures-algorithms/)
+- [Quokka](https://quokkajs.com/?referrer=qsp) for highlight all logged values in output pane and vscode IDE
 
 ## Show your support
 
