@@ -132,7 +132,8 @@ class Graph {
     }
     // Time complexity:
     hasEdge(value1, value2) {
-        // implement me...
+        // Returns true if edge exists, false otherwise
+        return this._nodes[value1].indexOf(value2) > -1
     }
     // Time complexity:
     forEach(fn) {
@@ -179,3 +180,6 @@ class Graph {
   console.log(myGraph._nodes);
   myGraph.removeEdge(2,1);
   console.log(myGraph._nodes);
+  console.log(myGraph.hasEdge(2, 1), 'supposed to false');
+  console.log(myGraph.hasEdge(4, 1), 'supposed to true');
+  console.log(myGraph.hasEdge(3, 2), 'supposed to true');
