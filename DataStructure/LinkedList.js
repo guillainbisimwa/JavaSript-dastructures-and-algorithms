@@ -120,6 +120,7 @@ class LinkedList {
         const oldNode = this.tail;
         this.tail = newNode;
         oldNode.next = newNode;
+        return newNode.value;
     }
 
     // Time complexity: O(1)
@@ -129,12 +130,21 @@ class LinkedList {
         const oldNext = node.next;
         node.next = newNode;
         newNode.next = oldNext;
+
+        if(this.tail == node ) this.tail = newNode;
+        return node.value;
     }
     // Time complexity: O(1)
     removeAfter(node) {
         // remove node after the refNode
+        if(!node.next) return 'Nothing to delete';
         const nodeToRemove = node.next;
         node.next = nodeToRemove.next;
+
+        if(this.tail == node ) this.tail = node.next;
+
+        return nodeToRemove.value;
+
     }
     // Time complexity:
     insertHead(value) {
@@ -165,17 +175,22 @@ class LinkedList {
 // Test
 
 var myLinkedList = new LinkedList(1);
+console.log(myLinkedList.removeAfter(myLinkedList.head));
+console.log(myLinkedList.insertAfter(myLinkedList.head, 7));
 console.log(myLinkedList.print());
 myLinkedList.insert(2);
 myLinkedList.insert(4);
 myLinkedList.insert(3);
 console.log(myLinkedList.print());
-myLinkedList.insertAfter(myLinkedList.head, 9);
+console.log(myLinkedList.insertAfter(myLinkedList.head, 9));
 console.log(myLinkedList.print());
-myLinkedList.insertAfter(myLinkedList.head.next, 8);
+console.log(myLinkedList.insertAfter(myLinkedList.head.next, 8));
 console.log(myLinkedList.print());
-myLinkedList.removeAfter(myLinkedList.head);
+console.log(myLinkedList.removeAfter(myLinkedList.head));
 console.log(myLinkedList.print());
+myLinkedList.insert(5);
+console.log(myLinkedList.print());
+
 
   
   // Time complexity:
