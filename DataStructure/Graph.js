@@ -96,16 +96,23 @@ class Graph {
         if(value === undefined) return 'Add a value';
         this._nodes[value] = this._nodes[value] || [];
     }
-    // Time complexity:
+    // Time complexity: O(n)
     removeNode(value) {
-        // implement me...
+        // Remove node from graph
+        this._nodes[value].forEach(neighbor=> {
+            var neighborsNeighbors = this._nodes[neighbor];
+            // find index of neighbor's node
+            var index = neighborsNeighbors.indexOf(value);
+            neighborsNeighbors.splice(index, 1);
+        });
+        delete this._nodes[value];
     }
-    // Time complexity:
+    // Time complexity: O(1)
     contains(value) {
         // Returns true if value is found in graph, false otherwise
         return this._nodes[value] !== undefined;
     }
-    // Time complexity:
+    // Time complexity: O(1)
     addEdge(value1, value2) {
         // Create connection between two nodes if they're both present in the graph
         if (!this._nodes[value1] || !this._nodes[value2]) {
@@ -140,14 +147,22 @@ class Graph {
   
   // Test
   var myGraph = new Graph();
-  myGraph.addNode(3);
-  myGraph.addNode(2);
   myGraph.addNode(4);
+  myGraph.addNode(3);
+  myGraph.addNode(1);
+  myGraph.addNode(2);
+
   console.log(myGraph);
   console.log(myGraph._nodes);
   console.log(myGraph.contains(4));
   console.log(myGraph.contains(1));
-  console.log(myGraph.addEdge(3,2))
-  console.log(myGraph.addEdge(3,7))
+  console.log(myGraph.addEdge(3,7));
+  console.log(myGraph._nodes);
+  console.log(myGraph.addEdge(1, 2));
+  console.log(myGraph.addEdge(3,2));
+  console.log(myGraph.addEdge(4, 2));
+  console.log(myGraph.addEdge(1, 4));
+  console.log(myGraph._nodes);
+  myGraph.removeNode(4);
   console.log(myGraph._nodes);
   
