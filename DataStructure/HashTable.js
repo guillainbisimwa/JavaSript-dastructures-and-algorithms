@@ -127,11 +127,13 @@ const simpleHash = (str, tableSize) => {
 
     return this;
   }
-  // Time complexity:
+  // Time complexity: O(1)
   get(key) {
-    // implement me...
+    // value associated with key, or undefined if none
+    var match = this.find(key).match;
+    return match && match[key];
   }
-  // Time complexity:
+  // Time complexity: O(1)
   has(key) {
     // implement me...
   }
@@ -174,3 +176,6 @@ const simpleHash = (str, tableSize) => {
   console.log( myMap.set(1, "Guystave"));
   console.log( myMap.set(2, "Eva"));
   console.log(myMap._storage);
+  console.log(myMap.get(1));
+  console.log(myMap.get(2));
+  console.log(myMap.get(3));
