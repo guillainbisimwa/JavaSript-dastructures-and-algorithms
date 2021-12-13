@@ -39,30 +39,45 @@ https://en.wikipedia.org/wiki/Trie
 
 */
 
-function Tree (value) {
-    // implement me...
-  }
+class Tree {
+    constructor(value) {
+        // Init constructor
+        this.value = value;
+        this.children = [];
+    }
+    addChild(value) {
+        // add child to tree/subtree and return child node (which should be a tree instance)
+        var newChild = new Tree(value);
+        this.children.push(newChild);
+        return newChild;
+    }
+    // Time complexity:
+    contains(value) {
+        // implement me...
+    }
+    // Time complexity:
+    traverseDepthFirst(fn) {
+        // implement me...
+    }
+    // Time complexity:
+    traverseBreadthFirst(fn) {
+        // implement me...
+    }
+}
   
-  Tree.prototype.addChild = function(value) {
-    // implement me...
-  };
   // Time complexity:
   
-  
-  Tree.prototype.contains = function(value) {
-    // implement me...
-  };
-  // Time complexity:
-  
-  
-  Tree.prototype.traverseDepthFirst = function(fn) {
-    // implement me...
-  };
-  // Time complexity:
-  
-  
-  Tree.prototype.traverseBreadthFirst = function(fn) {
-    // implement me...
-  };
-  // Time complexity:
-  
+  // Test 
+
+var myTree = new Tree(1);
+console.log(myTree);
+var branch1 = myTree.addChild(2);
+console.log(myTree);
+var branch2 = myTree.addChild(3);
+var branch3 = myTree.addChild(7);
+console.log(myTree);
+branch1.addChild(4);
+branch1.addChild(5);
+console.log(myTree);
+console.log(branch1);
+
