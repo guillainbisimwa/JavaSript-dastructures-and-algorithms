@@ -75,7 +75,17 @@ class BinarySearchTree {
     }
     // Time complexity:
     contains(value) {
-        // implement me...
+        // Return true if value is in tree, false if not
+        if (value == this.value) return true;
+
+        if (this.value < value) {
+            // Right
+            return !!this.right && this.right.contains(value);
+        }
+        else if (this.value >= value) {
+            return !!this.left && this.left.contains(value);
+        }
+        return false;
     }
     // Time complexity:
     traverseDepthFirst_inOrder(fn) {
@@ -103,7 +113,6 @@ class BinarySearchTree {
   
 // Test
 var bsTree = new BinarySearchTree(10);
-//bsTree.insert(5).insert(15).insert(8).insert(3).insert(7).insert(20).insert(17).insert(9).insert(14);
 bsTree.insert(5);
 bsTree.insert(15);
 bsTree.insert(8);
@@ -115,3 +124,7 @@ bsTree.insert(9);
 bsTree.insert(14);
 
 console.log(bsTree);
+console.log(bsTree.contains(10));
+console.log(bsTree.contains(5));
+console.log(bsTree.contains(2));
+console.log(bsTree.contains(11));
