@@ -51,9 +51,18 @@ class Tree {
         this.children.push(newChild);
         return newChild;
     }
-    // Time complexity:
+    // Time complexity: O(n)
     contains(value) {
-        // implement me...
+        // Return true if value is in tree, false if not
+        if(value == this.value){
+            return true;
+        }
+        for (let index = 0; index < this.children.length; index++) {
+            if(this.children[index].contains(value)){
+                return true;
+            }
+        }
+        return false;
     }
     // Time complexity:
     traverseDepthFirst(fn) {
@@ -80,4 +89,17 @@ branch1.addChild(4);
 branch1.addChild(5);
 console.log(myTree);
 console.log(branch1);
+console.log(branch3);
+branch2.addChild(6);
+var branch2Child = branch2.addChild(7);
+branch2Child.addChild(10);
+branch2Child.addChild(11);
+branch3.addChild(8);
+branch3.addChild(9);
+console.log(branch2);
+console.log(branch3);
 
+console.log(myTree.contains(9));
+console.log(myTree.contains(0));
+console.log(myTree.contains(12));
+console.log(myTree.contains(11), 'should print true');
