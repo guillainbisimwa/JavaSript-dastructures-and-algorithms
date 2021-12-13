@@ -1,8 +1,3 @@
----
-noteId: "83f664e05c1e11eca0efa99f91798ed3"
-tags: []
----
-
 # DATASTRUCTURE AND ALGORITHMS IN JAVASCRIPT
 
 ## Implement a Stack data structure
@@ -28,6 +23,10 @@ A tree has a root node.
 The root node has 0 or more children.
 Each child node has 0 or more children.
 (each node in the tree can be seen as a subtree)
+
+## Implement a Graph data structure
+
+Stores nodes (represented by any primitive value) and the neighbors for each node. This implementation represents a graph as an [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list).
 
 ## Implement a HASH TABLE data structure
 
