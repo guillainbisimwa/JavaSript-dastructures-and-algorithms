@@ -109,9 +109,25 @@ class BinarySearchTree {
         if(this.right) this.right.traverseDepthFirst_postOrder(fn);
         fn(this);
     }
-    // Time complexity:
+
+    traverseBreadthFirst(fn){
+        var queue = [this];
+        while(queue.length){
+            var node = queue.shift();
+            fn(node);
+            node.left && queue.push(node.left);
+            node.right && queue.push(node.right);
+        }
+    }
+    // Time complexity: O(n)
     checkIfFull() {
-        // implement me...
+        // A binary tree is full if every node has either zero or two children (no nodes have only one child)
+        var result = true;
+        this.traverseBreadthFirst((node)=> {
+            if(!node.left && node.right) result = false;
+            else if(node.left && !node.right) result= false;
+        });
+        return result;
     }
     // Time complexity:
     checkIfBalanced() {
@@ -156,3 +172,14 @@ bsTree.traverseDepthFirst_postOrder ((val)=> {
     traverseDepthFirst_postOrder .push(val.value);
 });
 console.log(traverseDepthFirst_postOrder);
+
+var traverseBreadthFirst = [];
+bsTree.traverseBreadthFirst(val => {
+    traverseBreadthFirst.push(val.value);
+});
+console.log(traverseBreadthFirst);
+
+console.log(bsTree.checkIfFull());
+
+bsTree.insert(21);
+console.log(bsTree.checkIfFull());
