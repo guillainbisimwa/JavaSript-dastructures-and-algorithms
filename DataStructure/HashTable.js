@@ -111,7 +111,21 @@ const simpleHash = (str, tableSize) => {
    */
   set(key, value) {
     // Store the key-value pair in the storage array.
+    var match = this.find(key).match;
+    var bucket = this.find(key).bucket;
 
+    //if macth exists, update key
+    if (match) {
+      match[key] = value;
+    } 
+    else {
+      var newItem = {};
+      newItem[key] = value;
+      bucket.push(newItem);
+      this._count++;
+    }
+
+    return this;
   }
   // Time complexity:
   get(key) {
@@ -153,6 +167,10 @@ const simpleHash = (str, tableSize) => {
   
   // Test 
 
-  var myMap = new HashTable();
+  var myMap = new HashTable(10);
   console.log(myMap);
-  myMap.find(1);
+  console.log(myMap._storage);
+  console.log( myMap.set(1, "Guy"));
+  console.log( myMap.set(1, "Guystave"));
+  console.log( myMap.set(2, "Eva"));
+  console.log(myMap._storage);
