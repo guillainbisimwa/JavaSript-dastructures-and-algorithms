@@ -144,7 +144,16 @@ class Graph {
     }
     // Time complexity:
     traverseDepthFirst(value, fn, visited, distance) {
-        // implement me...
+        // Starting at the node with the value passed in, traverse the graph and invoke the callback for each node in a depth-first fashion.
+        if (!this._nodes[value] || typeof fn !== 'function') return 'Invalid value or function';
+        visited = visited || {};
+        distance = distance || 0;
+        fn(value, distance);
+        visited[value] = true;
+        this._nodes[value].forEach(function(neighbor) {
+          if (visited[neighbor]) return;
+          this.traverseDepthFirst(neighbor, fn, visited, distance+1);
+        }, this);
     }
     // Time complexity:
     traverseBreadthFirst(value, fn) {
@@ -187,7 +196,14 @@ console.log(myGraph.hasEdge(2, 1), 'supposed to false');
 console.log(myGraph.hasEdge(4, 1), 'supposed to true');
 console.log(myGraph.hasEdge(3, 2), 'supposed to true');
 myGraph.addEdge(2,1);
+myGraph.addEdge(4,2);
 console.log(myGraph._nodes);
 myGraph.forEach((node, neighbor)=> {
     console.log(node, 'has neighbors', neighbor);
 });
+
+var traverseDF = [];
+myGraph.traverseDepthFirst(1, (val, dist)=> { 
+    traverseDF.push([val, dist]) 
+});
+console.log(traverseDF, 'should be [ [ 1, 0 ], [ 2, 1 ], [ 3, 2 ], [ 5, 3 ], [ 4, 2 ] ]');
