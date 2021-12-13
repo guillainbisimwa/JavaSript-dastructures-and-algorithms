@@ -12,6 +12,11 @@ FIFO - First in, first out
 Collection of elements with enqueue and dequeue operations.
 Note that there is a natural order. Elements are removed in the order of their addition.
 
+## Implement a Queue LINKED LIST data structure
+
+Comprised of nodes that represent a sequence.
+Each node is composed of data and a reference/link to the next node.
+
 ## Author
 
 👤 **Guillain Bisimwa**
