@@ -155,9 +155,11 @@ class LinkedList {
 
         return this.head;
     }
-    // Time complexity:
+    // Time complexity: O(1)
     removeHead() {
-        // implement me...
+        // remove the head node of the linked list
+        this.head = this.head.next;
+        return this.head.value;
     }
     findNode(value) {
         // implement me...
@@ -196,6 +198,10 @@ console.log(myLinkedList.print());
 myLinkedList.insert(5);
 console.log(myLinkedList.print());
 myLinkedList.insertHead(5);
+console.log(myLinkedList.print());
+myLinkedList.insertHead(5);
+console.log(myLinkedList.print());
+console.log(myLinkedList.removeHead());
 console.log(myLinkedList.print());
 
 
