@@ -1,3 +1,8 @@
+---
+noteId: "83f664e05c1e11eca0efa99f91798ed3"
+tags: []
+---
+
 # DATASTRUCTURE AND ALGORITHMS IN JAVASCRIPT
 
 ## Implement a Stack data structure
@@ -16,6 +21,13 @@ Note that there is a natural order. Elements are removed in the order of their a
 
 Comprised of nodes that represent a sequence.
 Each node is composed of data and a reference/link to the next node.
+
+## Implement a TREE data structure
+
+A tree has a root node.
+The root node has 0 or more children.
+Each child node has 0 or more children.
+(each node in the tree can be seen as a subtree)
 
 ## Implement a HASH TABLE data structure
 
