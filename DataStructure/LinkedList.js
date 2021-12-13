@@ -178,11 +178,29 @@ class LinkedList {
     // Time complexity:
     // PART 2:
     insertBefore(node, value) {
-        // implement me...
+        // insert new node with associated value before refNode
+
+        var nodeBefore = null;
+        var myNode = this.head;
+        if(this.head == node){
+            return 'No node before the head';
+        }
+        while(myNode){
+            if(myNode.next == node){
+                nodeBefore = myNode;
+               
+                return  this.insertAfter(nodeBefore, value) 
+            }
+
+            myNode = myNode.next
+        }
+        console.log(nodeBefore.value);
+        return nodeBefore.value;
+        
     }
     // Time complexity:
     removeBefore(node) {
-        // implement me...
+       
     }
 }
 
@@ -210,9 +228,20 @@ myLinkedList.insertHead(5);
 console.log(myLinkedList.print());
 console.log(myLinkedList.removeHead());
 console.log(myLinkedList.print());
-console.log(myLinkedList.findNode(2));
-console.log(myLinkedList.findNode(5));
+console.log(myLinkedList.findNode(1) == myLinkedList.head.next);
+console.log(myLinkedList.findNode(5) == myLinkedList.head);
 console.log(myLinkedList.findNode(20));
+console.log(myLinkedList.print());
+console.log(myLinkedList.insertBefore(myLinkedList.head));
+console.log(myLinkedList.insertBefore(myLinkedList.head.next, 10));
+console.log(myLinkedList.print());
+console.log(myLinkedList.insertBefore(myLinkedList.head.next.next, 11));
+console.log(myLinkedList.print());
+
+console.log(myLinkedList.removeBefore(myLinkedList.head.next));
+console.log(myLinkedList.print());
+console.log(myLinkedList.removeBefore(myLinkedList.head.next.next));
+console.log(myLinkedList.print());
 
 
 
