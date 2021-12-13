@@ -64,7 +64,7 @@ class Tree {
         }
         return false;
     }
-    // Time complexity:
+    // Time complexity: O(n)
     traverseDepthFirst(fn) {
         // Invoke the callback for every node in a depth-first order
         this.children.forEach(element => {
@@ -72,9 +72,18 @@ class Tree {
         });
         fn(this);
     }
-    // Time complexity:
+    // Time complexity: O(n)
     traverseBreadthFirst(fn) {
-        // implement me...
+        // Invoke the callback for every node in a breadth-first order
+        var queue = [this];
+        while(queue.length){
+            var node = queue.shift();
+            fn(node.value);
+
+            node.children.forEach( element => {
+                queue.push(element);
+            });
+        }
     }
 }
   
@@ -109,8 +118,15 @@ console.log(myTree.contains(12));
 console.log(myTree.contains(11), 'should print true');
 
 var traverseDepthFirst = [];
-myTree.traverseDepthFirst((val)=> {
+myTree.traverseDepthFirst(val=> {
     traverseDepthFirst.push(val.value);
 });
 
 console.log(traverseDepthFirst );
+
+var traverseBreadthFirst = [];
+myTree.traverseBreadthFirst(val => {
+    traverseBreadthFirst.push(val);
+});
+
+console.log(traverseBreadthFirst);
