@@ -89,11 +89,15 @@ class BinarySearchTree {
     }
     // Time complexity:
     traverseDepthFirst_inOrder(fn) {
-        // implement me...
+        //
+
     }
     // Time complexity:
     traverseDepthFirst_preOrder(fn) {
-        // implement me...
+        // Invoke the callback for every node in a depth-first pre-order (visits current node before its child nodes)
+        fn(this);
+        if(this.left) this.left.traverseDepthFirst_preOrder(fn);
+        if(this.right) this.right.traverseDepthFirst_preOrder(fn); 
     }
     // Time complexity:
     traverseDepthFirst_postOrder(fn) {
@@ -128,3 +132,9 @@ console.log(bsTree.contains(10));
 console.log(bsTree.contains(5));
 console.log(bsTree.contains(2));
 console.log(bsTree.contains(11));
+
+var traverseDepthFirst_preOrder = [];
+bsTree.traverseDepthFirst_preOrder((val)=> {
+    traverseDepthFirst_preOrder.push(val.value);
+});
+console.log(traverseDepthFirst_preOrder);
