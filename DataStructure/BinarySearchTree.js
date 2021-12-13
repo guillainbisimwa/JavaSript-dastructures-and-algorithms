@@ -89,8 +89,11 @@ class BinarySearchTree {
     }
     // Time complexity:
     traverseDepthFirst_inOrder(fn) {
-        //
-
+        // Invoke the callback for every node in a depth-first in-order (visit left branch, then current node, than right branch)
+        if (!this.left && !this.right) return fn(this);
+        if(this.left) this.left.traverseDepthFirst_inOrder(fn);
+        fn(this);
+        if(this.right) this.right.traverseDepthFirst_inOrder(fn);
     }
     // Time complexity:
     traverseDepthFirst_preOrder(fn) {
@@ -138,3 +141,9 @@ bsTree.traverseDepthFirst_preOrder((val)=> {
     traverseDepthFirst_preOrder.push(val.value);
 });
 console.log(traverseDepthFirst_preOrder);
+
+var traverseDepthFirst_inOrder  = [];
+bsTree.traverseDepthFirst_inOrder ((val)=> {
+    traverseDepthFirst_inOrder .push(val.value);
+});
+console.log(traverseDepthFirst_inOrder);
