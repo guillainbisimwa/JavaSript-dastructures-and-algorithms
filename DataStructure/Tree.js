@@ -66,7 +66,11 @@ class Tree {
     }
     // Time complexity:
     traverseDepthFirst(fn) {
-        // implement me...
+        // Invoke the callback for every node in a depth-first order
+        this.children.forEach(element => {
+            element.traverseDepthFirst(fn);
+        });
+        fn(this);
     }
     // Time complexity:
     traverseBreadthFirst(fn) {
@@ -103,3 +107,10 @@ console.log(myTree.contains(9));
 console.log(myTree.contains(0));
 console.log(myTree.contains(12));
 console.log(myTree.contains(11), 'should print true');
+
+var traverseDepthFirst = [];
+myTree.traverseDepthFirst((val)=> {
+    traverseDepthFirst.push(val.value);
+});
+
+console.log(traverseDepthFirst );
