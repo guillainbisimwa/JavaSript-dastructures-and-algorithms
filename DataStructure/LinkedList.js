@@ -189,18 +189,28 @@ class LinkedList {
             if(myNode.next == node){
                 nodeBefore = myNode;
                
-                return  this.insertAfter(nodeBefore, value) 
+                return this.insertAfter(nodeBefore, value);
             }
-
-            myNode = myNode.next
+            myNode = myNode.next;
         }
-        console.log(nodeBefore.value);
-        return nodeBefore.value;
+        return "This node doesn't exist";
         
     }
     // Time complexity:
     removeBefore(node) {
-       
+        var myNode = this.head;
+        var prev = this.head;
+        if(this.head == node){
+            return 'No node before the head';
+        }
+        while(myNode){
+            if(myNode.next == node){
+                return this.removeAfter(prev);
+            }
+            prev = myNode;
+            myNode = myNode.next;
+        }
+        return "This node doesn't exist";
     }
 }
 
@@ -238,9 +248,11 @@ console.log(myLinkedList.print());
 console.log(myLinkedList.insertBefore(myLinkedList.head.next.next, 11));
 console.log(myLinkedList.print());
 
-console.log(myLinkedList.removeBefore(myLinkedList.head.next));
+console.log(myLinkedList.removeBefore(myLinkedList.head));
 console.log(myLinkedList.print());
 console.log(myLinkedList.removeBefore(myLinkedList.head.next.next));
+console.log(myLinkedList.print());
+console.log(myLinkedList.removeBefore(myLinkedList.head.next));
 console.log(myLinkedList.print());
 
 
