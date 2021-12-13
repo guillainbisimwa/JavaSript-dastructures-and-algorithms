@@ -73,7 +73,7 @@ class BinarySearchTree {
         }
         return this;
     }
-    // Time complexity:
+    // Time complexity: O(log(n));
     contains(value) {
         // Return true if value is in tree, false if not
         if (value == this.value) return true;
@@ -87,7 +87,7 @@ class BinarySearchTree {
         }
         return false;
     }
-    // Time complexity:
+    // Time complexity: O(n)
     traverseDepthFirst_inOrder(fn) {
         // Invoke the callback for every node in a depth-first in-order (visit left branch, then current node, than right branch)
         if (!this.left && !this.right) return fn(this);
@@ -95,16 +95,19 @@ class BinarySearchTree {
         fn(this);
         if(this.right) this.right.traverseDepthFirst_inOrder(fn);
     }
-    // Time complexity:
+    // Time complexity: O(n)
     traverseDepthFirst_preOrder(fn) {
         // Invoke the callback for every node in a depth-first pre-order (visits current node before its child nodes)
         fn(this);
         if(this.left) this.left.traverseDepthFirst_preOrder(fn);
         if(this.right) this.right.traverseDepthFirst_preOrder(fn); 
     }
-    // Time complexity:
+    // Time complexity: O(n)
     traverseDepthFirst_postOrder(fn) {
-        // implement me...
+        // Invoke the callback for every node in a depth-first post-order (visit the current node after its child nodes)
+        if(this.left) this.left.traverseDepthFirst_postOrder(fn);
+        if(this.right) this.right.traverseDepthFirst_postOrder(fn);
+        fn(this);
     }
     // Time complexity:
     checkIfFull() {
@@ -147,3 +150,9 @@ bsTree.traverseDepthFirst_inOrder ((val)=> {
     traverseDepthFirst_inOrder .push(val.value);
 });
 console.log(traverseDepthFirst_inOrder);
+
+var traverseDepthFirst_postOrder  = [];
+bsTree.traverseDepthFirst_postOrder ((val)=> {
+    traverseDepthFirst_postOrder .push(val.value);
+});
+console.log(traverseDepthFirst_postOrder);
