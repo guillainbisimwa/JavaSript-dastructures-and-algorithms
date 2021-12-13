@@ -170,9 +170,10 @@ class LinkedList {
         }
         return 'No node found';
     }
-    // Time complexity:
+    // Time complexity: O(1)
     appendToTail(value) {
-        // implement me...
+        // Insert method
+        this.insert(value);
     }
     // Time complexity:
     // PART 2:
@@ -209,8 +210,9 @@ myLinkedList.insertHead(5);
 console.log(myLinkedList.print());
 console.log(myLinkedList.removeHead());
 console.log(myLinkedList.print());
-console.log(myLinkedList.findNode(2).value);
-console.log(myLinkedList.findNode(20).value);
+console.log(myLinkedList.findNode(2));
+console.log(myLinkedList.findNode(5));
+console.log(myLinkedList.findNode(20));
 
 
 
