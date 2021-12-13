@@ -143,6 +143,7 @@ class Graph {
         }
     }
     // Time complexity:
+    // TO BE CHECK !!!!!!!!!
     traverseDepthFirst(value, fn, visited, distance) {
         // Starting at the node with the value passed in, traverse the graph and invoke the callback for each node in a depth-first fashion.
         if (!this._nodes[value] || typeof fn !== 'function') return 'Invalid value or function';
@@ -157,7 +158,23 @@ class Graph {
     }
     // Time complexity:
     traverseBreadthFirst(value, fn) {
-        // implement me...
+        // Starting at the node with the value passed in, traverse the graph and invoke the callback for each node in a breadth-first fashion.
+
+        if (!this._nodes[value] || typeof fn !== 'function') return 'Invalid value or function';
+        var visited = {};
+        var queue = [value];
+        visited[value] = 0;
+        while (queue.length) {
+          var node = queue.shift();
+          fn(node, visited[node]);
+          var neighbors = this._nodes[node].filter(function(neighbor) {
+            if (visited[neighbor] === undefined) {
+              visited[neighbor] = visited[node]+1;
+              return true;
+            }
+          });
+          queue = queue.concat(neighbors);
+        }
     }
 }
   
@@ -169,6 +186,7 @@ myGraph.addNode(4);
 myGraph.addNode(3);
 myGraph.addNode(1);
 myGraph.addNode(2);
+myGraph.addNode(5);
 
 console.log(myGraph);
 console.log(myGraph._nodes);
@@ -197,6 +215,7 @@ console.log(myGraph.hasEdge(4, 1), 'supposed to true');
 console.log(myGraph.hasEdge(3, 2), 'supposed to true');
 myGraph.addEdge(2,1);
 myGraph.addEdge(4,2);
+myGraph.addEdge(5,3);
 console.log(myGraph._nodes);
 myGraph.forEach((node, neighbor)=> {
     console.log(node, 'has neighbors', neighbor);
@@ -207,3 +226,9 @@ myGraph.traverseDepthFirst(1, (val, dist)=> {
     traverseDF.push([val, dist]) 
 });
 console.log(traverseDF, 'should be [ [ 1, 0 ], [ 2, 1 ], [ 3, 2 ], [ 5, 3 ], [ 4, 2 ] ]');
+
+var traverseBF = [];
+myGraph.traverseBreadthFirst(1, (val, dist)=> { 
+    traverseBF.push([val, dist]) 
+});
+console.log(traverseBF, 'should be [ [ 1, 0 ], [ 2, 1 ], [ 4, 1 ], [ 3, 2 ], [ 5, 3 ] ]');
