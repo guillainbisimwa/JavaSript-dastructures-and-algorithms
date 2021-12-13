@@ -123,6 +123,9 @@ const simpleHash = (str, tableSize) => {
       newItem[key] = value;
       bucket.push(newItem);
       this._count++;
+      if (this._count > 0.75 * this._size) {
+        this.resize(2 * this._size);
+      }
     }
 
     return this;
