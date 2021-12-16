@@ -1,8 +1,3 @@
----
-noteId: "847a1c605c3511eca0efa99f91798ed3"
-tags: []
----
-
 # DATASTRUCTURE AND ALGORITHMS IN JAVASCRIPT
 
 ## Implement a Stack data structure
@@ -49,6 +44,10 @@ Use an array as the underlying data structure.
 Hash table should have a size - this will be used by the hashing function to determine what index to map the key to.
 A hashing function is used to map the key to an integer, which is the index that the value is to be stored at.
 Since our hashing function might map multiple keys to the same integer, we have to deal with collisions by creating buckets at each index of the storage array. These buckets can be arrays or linked lists.
+
+## Recursion
+
+The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily.
 
 ## Author
 
