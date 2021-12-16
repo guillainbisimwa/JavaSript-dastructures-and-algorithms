@@ -49,6 +49,12 @@ Since our hashing function might map multiple keys to the same integer, we have 
 
 The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily.
 
+## Elementary Sorting
+
+### Bubble SORT
+
+Iterate over array, comparing adjacent items and swap if in incorrect order. Largest elements bubble to the end of the array
+
 ## Author
 
 👤 **Guillain Bisimwa**
