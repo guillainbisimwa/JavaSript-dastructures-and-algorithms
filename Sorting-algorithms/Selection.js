@@ -28,3 +28,28 @@ Stable Variant
 - Implement selection sort for a linked list (you can use your data structure implemention from earlier in the course). How does this impact performance and stability?
 
 */
+
+const selectionSort = (arr) => {
+    let i = 0;
+    do {
+        let min = arr[i];
+        let currentIndex = i;
+        for (let index = i; index < arr.length; index++) {
+            if(min > arr[index]){
+                min = arr[index];
+                currentIndex = index;
+            }
+        }
+        // swap
+        var temp = arr[i];
+        arr[i] = min;
+        arr[currentIndex] = temp;
+        min = arr[i];
+        i++;
+    } while (i < arr.length);
+
+    return arr;
+}
+
+console.log(selectionSort([2, 3, 1, 6, 4]));
+console.log(selectionSort([4, 1, 2, 2, 5,3,8,5,6,7]));
