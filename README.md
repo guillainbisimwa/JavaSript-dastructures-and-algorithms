@@ -49,6 +49,40 @@ Since our hashing function might map multiple keys to the same integer, we have 
 
 The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily.
 
+## Elementary [Sorting](https://visualgo.net/en/sorting)
+
+### Bubble SORT
+
+Iterate over array, comparing adjacent items and swap if in incorrect order. Largest elements bubble to the end of the array
+
+### Selection SORT
+
+Iterate over array and grow a sorted array behind current element.
+
+For each position, find the smallest element in unsorted subarray starting at that position, and swap elements so that smallest element is at the beginning of unsorted subarray.
+
+### Insertion SORT
+
+Iterate over array and grow a sorted array behind current element.
+
+For each position, compare value of element with previous elements and swap positions if previous element is larger.
+
+### Merge SORT
+
+Merge sort employs a divide and conquer strategy - merge two sorted subarrays into one sorted array.
+
+Recursive top-down approach:
+Recursively break down array into two subarrays and sort them recursively. Subarrays are broken down until they have only 1 element (implying they are sorted).
+
+Iterative bottom-up approach:
+Split array into sublists of size 1, merge adjacent sublists into sorted lists, repeat until no more sublists.
+
+### Quick SORT
+
+Like merge sort, quick sort employs a divide and conquer strategy.
+
+It has a partitioning step, in which you pick an element (called a pivot) and partition the array so that all smaller elements come before pivot and all larger elements come after. The pivot will be in its final position. Recursively apply this to the subarray of smaller elements and the subarray of larger elements.
+
 ## Author
 
 👤 **Guillain Bisimwa**
