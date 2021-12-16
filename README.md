@@ -67,6 +67,16 @@ Iterate over array and grow a sorted array behind current element.
 
 For each position, compare value of element with previous elements and swap positions if previous element is larger.
 
+### Merge SORT
+
+Merge sort employs a divide and conquer strategy - merge two sorted subarrays into one sorted array.
+
+Recursive top-down approach:
+Recursively break down array into two subarrays and sort them recursively. Subarrays are broken down until they have only 1 element (implying they are sorted).
+
+Iterative bottom-up approach:
+Split array into sublists of size 1, merge adjacent sublists into sorted lists, repeat until no more sublists.
+
 ## Author
 
 👤 **Guillain Bisimwa**
