@@ -17,5 +17,25 @@ const simpleFib = (n) => {
     return simpleFib(n-1) + simpleFib(n-2);
 };
 
+// O(n)
+const dynamicFibo = (n) => {
+    let memo = {
+        0: 0,
+        1: 1
+    };
+
+    const recurse = (m) =>{
+        if (memo[m] === undefined) {
+            memo[m] = recurse(m - 1 ) + recurse(m - 2);
+        }
+        return memo[m];
+    }
+
+    return recurse(n);
+}
+
 console.log(simpleFib(4));
 console.log(simpleFib(9));
+
+console.log(dynamicFibo(4));
+console.log(dynamicFibo(9));
