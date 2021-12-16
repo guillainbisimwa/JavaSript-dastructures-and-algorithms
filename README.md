@@ -77,6 +77,12 @@ Recursively break down array into two subarrays and sort them recursively. Subar
 Iterative bottom-up approach:
 Split array into sublists of size 1, merge adjacent sublists into sorted lists, repeat until no more sublists.
 
+### Quick SORT
+
+Like merge sort, quick sort employs a divide and conquer strategy.
+
+It has a partitioning step, in which you pick an element (called a pivot) and partition the array so that all smaller elements come before pivot and all larger elements come after. The pivot will be in its final position. Recursively apply this to the subarray of smaller elements and the subarray of larger elements.
+
 ## Author
 
 👤 **Guillain Bisimwa**
