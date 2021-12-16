@@ -1,8 +1,3 @@
----
-noteId: "312d0a705e7611ecb6ec538e380a61a1"
-tags: []
----
-
 # DATASTRUCTURE AND ALGORITHMS IN JAVASCRIPT
 
 ## Implement a Stack data structure
@@ -54,7 +49,7 @@ Since our hashing function might map multiple keys to the same integer, we have 
 
 The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily.
 
-## Elementary Sorting
+## Elementary [Sorting](https://visualgo.net/en/sorting)
 
 ### Bubble SORT
 
@@ -65,6 +60,12 @@ Iterate over array, comparing adjacent items and swap if in incorrect order. Lar
 Iterate over array and grow a sorted array behind current element.
 
 For each position, find the smallest element in unsorted subarray starting at that position, and swap elements so that smallest element is at the beginning of unsorted subarray.
+
+### Insertion SORT
+
+Iterate over array and grow a sorted array behind current element.
+
+For each position, compare value of element with previous elements and swap positions if previous element is larger.
 
 ## Author
 
