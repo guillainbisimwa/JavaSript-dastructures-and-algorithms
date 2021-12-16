@@ -17,7 +17,24 @@ const loopDownRecursive = (n) => {
 
 //3.Write a function 'exponent' that takes two arguments base, and expo, uses a while loop to return the exponenet value of the base.
 
+const exponent = (base, expo) => {
+    let myBase = base;
+
+    while(expo > 1){
+        myBase *= base;
+        expo--;
+    }
+    return myBase;
+}
+
 //4. Write a function 'RecursiveExponent' that takes two arguments base, and expo, recursively returns exponent value of the base.
+
+const exponentRecursive = (base, expo) =>{
+    if (expo == 1) {
+        return base;
+    }
+    return base * exponentRecursive(base, --expo);
+}
 
 //5. Write a function 'recursiveMultiplier' that takes two arguments, 'arr and num', and multiplies each arr value into by num and returns an array of the values.
 
@@ -26,4 +43,8 @@ const loopDownRecursive = (n) => {
 // Test
 
 loopDown(2);
-loopDownRecursive(2)
+loopDownRecursive(2);
+console.log(exponent(2,3));
+console.log(exponent(3,2));
+console.log(exponentRecursive(2,3));
+console.log(exponentRecursive(3,2));
