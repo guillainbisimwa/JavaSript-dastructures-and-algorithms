@@ -1,3 +1,8 @@
+---
+noteId: "312d0a705e7611ecb6ec538e380a61a1"
+tags: []
+---
+
 # DATASTRUCTURE AND ALGORITHMS IN JAVASCRIPT
 
 ## Implement a Stack data structure
@@ -54,6 +59,12 @@ The process in which a function calls itself directly or indirectly is called re
 ### Bubble SORT
 
 Iterate over array, comparing adjacent items and swap if in incorrect order. Largest elements bubble to the end of the array
+
+### Selection SORT
+
+Iterate over array and grow a sorted array behind current element.
+
+For each position, find the smallest element in unsorted subarray starting at that position, and swap elements so that smallest element is at the beginning of unsorted subarray.
 
 ## Author
 
