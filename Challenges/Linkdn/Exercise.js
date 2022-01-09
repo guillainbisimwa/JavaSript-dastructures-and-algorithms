@@ -61,3 +61,33 @@ console.log(one);
 console.log(four);
 
 console.log(typeof(4));
+
+let arr2 = ["Amazon", "Bormeo","Cerado", "Congo"];
+
+for (var index = 0; index < arr2.length; index++) {
+    console.log(index);
+}
+
+console.log(index);
+const cosARR = [1,2,3,4];
+console.log(cosARR);
+cosARR[0] = 3;
+//cosARR = [2,3,3]
+console.log(cosARR);
+
+// Destructuring
+// old way
+console.log(arr2[0]);
+console.log(arr2[1]);
+console.log(arr2[2]);
+
+// New way
+const [america, Asia, , africa] = arr2;
+console.log(america);
+console.log(Asia);
+console.log(africa);
+
+// Combime destructuring with sread operator
+
+const [one1, two1, ...rest1] = cosARR;
+console.log(rest1);
