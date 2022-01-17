@@ -7,12 +7,15 @@ Map keys to values for efficient lookup.
 Use an array as the underlying data structure.
 Hash table should have a size - this will be used by the hashing function to determine what index to map the key to.
 A hashing function is used to map the key to an integer, which is the index that the value is to be stored at.
-Since our hashing function might map multiple keys to the same integer, we have to deal with collisions by creating buckets at each index of the storage array. These buckets can be arrays or linked lists.
+Since our hashing function might map multiple keys to the same integer, 
+we have to deal with collisions by creating buckets at each index of the storage array. 
+These buckets can be arrays or linked lists.
 
 
 *** Note:
 
-ES6 includes a Map data structure. It differs from the JavaScript object because the keys can be any value (not just strings like for objects), there is a size property, and there is a guaranteed order (the insertion order).
+ES6 includes a Map data structure. It differs from the JavaScript object because the keys can be any value 
+(not just strings like for objects), there is a size property, and there is a guaranteed order (the insertion order).
 
 Hash tables are also referred to as hash mapse or dictionaries.
 
