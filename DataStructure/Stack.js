@@ -50,6 +50,7 @@ What's the time complexity?
 
  */
 
+
 class Stack {
     constructor(capacity) {
         // Constructor Init
@@ -98,6 +99,20 @@ class Stack {
     storage(){
         return this._storage
     }
+
+    /**
+     * @param {*} value
+     * Check if a value is in the stack
+     * Return Boolean
+     */
+     contains(value){
+        for (let i = 0; i < this._count; i++) {
+            if(this._storage[i] === value){
+                return true;
+            }            
+        }
+        return false;
+    }
 }
 
 
@@ -105,6 +120,7 @@ class Stack {
 let myStack = new Stack(2);
 console.log(myStack.count());
 console.log(myStack.push('Goma'));
+console.log(myStack.contains('Goma'));
 console.log(myStack.push('Kigali'));
 console.log(myStack.push('Kinshasa'));
 console.log(myStack.push("Kampala"));
@@ -117,6 +133,7 @@ console.log(myStack.pop());
 console.log(myStack.count());
 console.log(myStack.peek());
 console.log(myStack.count());
+console.log(myStack.contains('Goma'));
 
 
   // Time complexity:
