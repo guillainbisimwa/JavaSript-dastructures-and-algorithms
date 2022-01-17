@@ -5,7 +5,7 @@ QUEUE
 Abstract data type
 FIFO - First in, first out
 Collection of elements with enqueue and dequeue operations.
-Note that there is a natural order. Elements are removed in the reverse order of their addition.
+Note that there is a natural order. Elements are removed in the order of their addition.
 
 DO NOT use an array and the native push/shift method in your implementation. Use an object as the underlying data structure.
 
@@ -88,15 +88,19 @@ class Queue {
 // Test
 var myQueue = new Queue();
 console.log(myQueue.count());
+console.log(myQueue);
 console.log(myQueue.enqueue('Jan'));
 console.log(myQueue.enqueue('Feb'));
 console.log(myQueue.peek());
 console.log(myQueue.count());
+console.log(myQueue);
 console.log(myQueue.enqueue('Mar'));
 console.log(myQueue.enqueue('Apr'));
 console.log(myQueue.count());
 console.log(myQueue.peek());
+console.log(myQueue);
 console.log(myQueue.dequeue());
+console.log(myQueue);
 console.log(myQueue.peek());
 
 
