@@ -9,40 +9,20 @@
  * 
  *  */ 
 
-const countFunction = (n, arr) => {
-
-    let c = false;
-    arr.array.forEach(element => {
-        if (element == n) {
-            return true
-        }
-    });
-    return c
-}
 
  const SockMerchant = (n, ar) => {
-    let index = [];
     let count = 0;
+    let socks = {};
+    let i = 0
 
-    // Loop throughout ar and push all even index into a new array
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n; j++) {
-            // Check if index is already inside the index array
-            //  if (countFunction(i, index) && countFunction(j, index)) {
-            if (!index.find((el) => el === i ) && !index.find((el) => el === j )) {
-                if (ar[i] === ar[j] && i !== j) {
-                    console.log(ar[i], ar[j], i, j);
-                    index.push(i);
-                    index.push(j);
-                    count++;
-                    
-                }
-            }
-            index.push(j);
+    do{
+        socks[ar[i]] = socks[ar[i]] + 1 || 1;
+        if(socks[ar[i]] % 2 == 0){
+            count++
         }
-        index.push(i);
-        console.log(index);
-    }
+       console.log(socks);
+       i++;
+    } while(i < n)
     
     return count;
 };
@@ -55,6 +35,6 @@ const n = SockMerchant(9, [10,20,20,10,10,30,50,10,50]);
 
 console.log(n);
 
-const m = SockMerchant(3, [10,10,10]);
+const m = SockMerchant(3, [10,1,10]);
 
 console.log(m);
