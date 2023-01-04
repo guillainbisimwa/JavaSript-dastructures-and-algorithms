@@ -13,12 +13,12 @@
  const SockMerchant = (n, ar) => {
     let count = 0;
     let socks = {};
-    let i = 0
+    let i = 0;
 
     do{
         socks[ar[i]] = socks[ar[i]] + 1 || 1;
         if(socks[ar[i]] % 2 == 0){
-            count++
+            count++;
         }
        console.log(socks);
        i++;
