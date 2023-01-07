@@ -7,7 +7,7 @@
  */
 
 const countingValue = (steps, path ) => {
-    let prev = -1;
+    let prev = 0;
     let value = {};
     let uCount = 0;
     let dCount = 0;
@@ -21,7 +21,12 @@ const countingValue = (steps, path ) => {
         console.log(value['U']);
         console.log(value['D']);
         if ( element == 'U') {
-            uCount = value['D'] - value['U']
+            if ( value['D'] == 0) {
+                uCount = value['U']
+            }
+            else {
+                uCount = value['D'] - value['U']
+            }
             console.log(uCount);
         }
         if (element == 'D') {
@@ -30,9 +35,10 @@ const countingValue = (steps, path ) => {
         }
         
         console.log(uCount);
+        console.log(prev);
 
         // calculate difference
-        if (uCount == 0) {
+        if (uCount == 0 && prev < 0) {
             dCount++;
             
         }
@@ -45,8 +51,8 @@ const countingValue = (steps, path ) => {
     return dCount;
 }
 
-//const x = countingValue(8, "UDDDUDUU");
-const y = countingValue(8, "DDUU");
+//const x = countingValue(8, "UD");
+const y = countingValue(8, "DUUD");
 
 //console.log(x);
 console.log(y);
